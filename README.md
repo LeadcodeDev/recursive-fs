@@ -21,7 +21,7 @@ fetch(
   extentions: Array<string>,
   encode?: Buffer | string | undefined,
   callback?: () => void
-): Map<string, File> {}
+): Promise<Map<string, File>> {}
 ```
 
 ### An example is always more telling
