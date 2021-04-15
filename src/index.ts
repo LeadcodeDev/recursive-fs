@@ -1,6 +1,5 @@
 import FileManager from "./FileManager";
 import Encode from "./Types/Encode";
-import path from "path";
 
 export function manager (): FileManager {
   return FileManager.getInstance()

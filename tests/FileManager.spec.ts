@@ -1,6 +1,12 @@
 import test from 'ava'
 import * as path from "path";
 import { fetch } from "../src";
+import FileManager from "../build/FileManager";
+
+test('get instance of FileManager',  async (t) => {
+  const fileManager = FileManager.getInstance()
+  t.assert(fileManager instanceof FileManager)
+})
 
 test('get one file with typescript extension',  async (t) => {
   const extensions = ['ts']
