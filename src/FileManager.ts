@@ -14,7 +14,7 @@ export default class FileManager {
     return this.instance
   }
 
-  public async fetch (basePath: string, extensions: Array<string>, encode?: Encode, callback?: (file: File) => void) {
+  public async fetch (basePath: string, extensions: Array<string>, encode?: Encode, excludes: Array<string> = [], callback?: (file: File) => void) {
     const filesList: Map<any, File> = new Map()
     const baseDirectory: boolean = fs.existsSync(basePath)
     if (!baseDirectory) {
@@ -28,7 +28,8 @@ export default class FileManager {
         objects.map(async (object) => {
           const dir = path.join(directory, object)
           const item = await fs.promises.stat(dir)
-          if (item.isDirectory()) {
+
+          if (item.isDirectory() && excludes.includes(dir.split(path.sep).pop()!)) {
             return walk(dir)
           }
 
