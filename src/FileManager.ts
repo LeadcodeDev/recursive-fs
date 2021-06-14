@@ -29,14 +29,15 @@ export default class FileManager {
           const dir = path.join(directory, object)
           const item = await fs.promises.stat(dir)
 
-          if (item.isDirectory() && excludes.includes(dir.split(path.sep).pop()!)) {
-            return walk(dir)
+          if (item.isDirectory()) {
+            if (!excludes.includes(dir.split(path.sep).pop()!)) {
+              return walk(dir)
+            }
           }
 
           const isAllowedFile = extensions.some((extension: string) => {
             return object.endsWith(`.${extension}`)
           })
-
 
           if (isAllowedFile) {
             const file = new File(dir)
