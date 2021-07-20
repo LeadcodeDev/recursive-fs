@@ -14,7 +14,12 @@ export default class File {
   }
 
   private getFile (): string {
-    const path = this.path.split('\\')
+    const os: any = {
+      'win32': () => this.path.split('\\'),
+      darwin: () => this.path.split('/'),
+      linux: () => this.path.split('/')
+    }
+    const path = os[process.platform]()
     return path[path.length - 1]
   }
 

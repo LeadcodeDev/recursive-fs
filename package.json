@@ -1,6 +1,6 @@
 {
 	"name": "fs-recursive",
-	"version": "1.1.0",
+	"version": "1.1.3",
 	"main": "build/index.js",
 	"repository": "git@github.com:LeadcodeDev/Recursive-fs.git",
 	"author": "Freeze455 <baptiste.parmantier.pro@gmail.com>",
@@ -11,7 +11,7 @@
 		"test": "ava"
 	},
 	"dependencies": {
-		"@types/node": "^14.14.32",
+		"@types/node": "^16.3.3",
 		"@types/uuid": "^8.3.0",
 		"fs": "^0.0.1-security",
 		"ts-node": "^9.1.1",

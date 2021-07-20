@@ -1,5 +1,10 @@
 import FileManager from "./FileManager";
 import Encode from "./Types/Encode";
+import File from './File'
+
+export {
+  File
+}
 
 export function manager (): FileManager {
   return FileManager.getInstance()
