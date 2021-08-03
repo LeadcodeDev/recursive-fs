@@ -1,7 +1,7 @@
 import fs from "fs";
 import File from "./File";
 import path from "path";
-import Encode from "./Types/Encode";
+import { Encode } from "./Types/Encode";
 import { v4 as uuid } from 'uuid';
 
 export default class FileManager {

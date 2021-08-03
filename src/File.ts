@@ -1,6 +1,7 @@
 import { Stats } from "fs";
+import { sep } from 'path'
 import fs from "fs";
-import Encode from "./Types/Encode";
+import { Encode } from "./Types/Encode";
 
 export default class File {
   public readonly filename: string
@@ -14,13 +15,8 @@ export default class File {
   }
 
   private getFile (): string {
-    const os: any = {
-      'win32': () => this.path.split('\\'),
-      darwin: () => this.path.split('/'),
-      linux: () => this.path.split('/')
-    }
-    const path = os[process.platform]()
-    return path[path.length - 1]
+    const partials = this.path.split(sep)
+    return partials[partials.length - 1]
   }
 
   private getFilename (): string {

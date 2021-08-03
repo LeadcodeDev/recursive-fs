@@ -1,3 +1,1 @@
-type Encode = BufferEncoding | null | undefined
-
-export default Encode
+export type Encode = BufferEncoding | null | undefined

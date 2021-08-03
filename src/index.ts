@@ -1,5 +1,5 @@
 import FileManager from "./FileManager";
-import Encode from "./Types/Encode";
+import { Encode } from "./Types/Encode";
 import File from './File'
 
 export {
