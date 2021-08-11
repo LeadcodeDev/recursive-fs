@@ -1,6 +1,5 @@
-import { Stats } from "fs";
+import fs, { Stats } from "fs";
 import { sep } from 'path'
-import fs from "fs";
 import { Encode } from "./Types/Encode";
 
 export default class File {
