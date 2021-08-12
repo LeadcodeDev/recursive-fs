@@ -35,3 +35,21 @@ test('get stats', async (t) => {
 
   t.assert(stats instanceof Stats)
 })
+
+test('can write', async (t) => {
+	const file = getFile('File.ts')
+
+	t.assert(await file.canWrite())
+})
+
+test('can read', async (t) => {
+	const file = getFile('File.ts')
+
+	t.assert(await file.canRead())
+})
+
+test('can execute', async (t) => {
+	const file = getFile('File.ts')
+
+	t.assert(await file.canExecute())
+})

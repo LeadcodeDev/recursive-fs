@@ -1,6 +1,5 @@
-import { Stats } from "fs";
+import fs, { Stats } from "fs";
 import { sep } from 'path'
-import fs from "fs";
 import { Encode } from "./Types/Encode";
 
 export default class File {
@@ -40,4 +39,25 @@ export default class File {
   public getContent (encode: Encode): Promise<Buffer | string | undefined> {
     return fs.promises.readFile(this.path, { encoding: encode })
   }
+
+	public async canAccess(mode: number): Promise<boolean> {
+		try {
+			await fs.promises.access(this.path, mode)
+			return true
+		} catch {
+			return false
+		}
+	}
+
+	public canWrite (): Promise<boolean> {
+		return this.canAccess(fs.constants.W_OK)
+	}
+
+	public canRead (): Promise<boolean> {
+		return this.canAccess(fs.constants.R_OK)
+	}
+
+	public canExecute (): Promise<boolean> {
+		return this.canAccess(fs.constants.X_OK)
+	}
 }

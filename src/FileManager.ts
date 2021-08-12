@@ -54,4 +54,41 @@ export default class FileManager {
     await walk(basePath)
     return filesList
   }
+
+	public async fetchExpression (basePath: string, filenamePattern: RegExp, encode: Encode, excludes: Array<string> = [], callback?: (file: File) => void) {
+		const filesList: Map<any, File> = new Map()
+    const baseDirectory: boolean = fs.existsSync(basePath)
+    if (!baseDirectory) {
+      return filesList
+    }
+
+    async function walk (directory: string): Promise<void> {
+      const objects = await fs.promises.readdir(directory, { encoding: encode })
+
+      await Promise.all(
+        objects.map(async (object) => {
+          const dir = path.join(directory, object)
+          const item = await fs.promises.stat(dir)
+
+          if (item.isDirectory()) {
+            if (!excludes.includes(dir.split(path.sep).pop()!)) {
+              return walk(dir)
+            }
+          }
+
+          if (filenamePattern.test(object)) {
+            const file = new File(dir)
+            filesList.set(uuid(), file)
+
+            if (callback) {
+              callback(file)
+            }
+          }
+        })
+      )
+    }
+
+    await walk(basePath)
+    return filesList
+	}
 }
