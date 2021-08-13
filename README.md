@@ -31,20 +31,20 @@ fetch(
 ): Promise<Map<string, File>>
 
 fetchExpression (
-	path: string,
-	filenamePattern: RegExp,
-	encode: Encode,
-	excludes?: Array<string>,
-	callback?: (file: File) => void
+  path: string,
+  filenamePattern: RegExp,
+  encode: Encode,
+  excludes?: Array<string>,
+  callback?: (file: File) => void
 ): Promise<Map<string, File>>
 
 fetchSortedExpression (
-	path: string,
-	filenamePattern: RegExp,
-	sortedExtensions: Array<string>,
-	encode: Encode,
-	excludes?: Array<string>,
-	callback?: (file: File) => void
+  path: string,
+  filenamePattern: RegExp,
+  sortedExtensions: Array<string>,
+  encode: Encode,
+  excludes?: Array<string>,
+  callback?: (file: File) => void
 ): Promise<Array<File>>
 ```
 
