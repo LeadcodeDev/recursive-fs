@@ -39,6 +39,7 @@ bower_components
 node_modules/
 jspm_packages/
 src/
+tests/
 
 # TypeScript v1 declaration files
 typings/
